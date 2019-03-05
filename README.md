@@ -219,4 +219,4 @@ actions: {
   },
 }
 ```
-## kfc-global-container/views  测试页面
+## kfc-global-navigation/views  测试页面

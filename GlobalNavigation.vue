@@ -70,16 +70,18 @@ export default {
     },
     // 鼠标点击header菜单切换事件
     onHeaderMenuChange (name) {
+      const getActiveName = (menuList) => {
+        if (menuList.children) {
+          return getActiveName(menuList.children[0])
+        }
+        return menuList.name
+      }
       // 更新header高亮菜单名称
       this.$store.commit('updateHeaderActiveName', name)
       // 获取当前header菜单对应左侧菜单数据
       let siderMenu = this.getHeaderMenu.filter(item => item.name === name)[0]
       // 获取切换header菜单后默认第一个菜单页面
-      let siderActiveName = siderMenu.name
-      // 如果是二级页面获取二级页面第一个页面
-      if (siderMenu.children) {
-        siderActiveName = siderMenu.children[0].name
-      }
+      let siderActiveName = getActiveName(siderMenu)
       // 更新左侧高亮菜单名称
       this.$store.commit('updateRouterName', siderActiveName)
       // 跳转页面
