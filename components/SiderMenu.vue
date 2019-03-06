@@ -11,7 +11,10 @@
         <Icon :type="submenu.icon" />
         {{ submenu.title }}
       </MenuItem>
-      <Submenu v-if="submenu.children" :key="submenu.name">
+      <Submenu
+        :name="submenu.name"
+        v-if="submenu.children"
+        :key="submenu.name">
         <template slot="title">
           <Icon :type="submenu.icon" />
           <span>{{ submenu.title }}</span>
